@@ -644,7 +644,7 @@ return json
 
 -->
 -- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+— https://t.me/SaMaN_SaNstar2017
+— @MeGaNet_sbot
+— @SaMaN_SaNtori
+— @SaMaN_SaNstar2017
