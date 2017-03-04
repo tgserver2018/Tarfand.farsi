@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME/Tarfand.farsi
+cd $HOME/Tarfandfarsi
 
 install() {
 	    cd tg
@@ -23,15 +23,20 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 
 cd $HOME
 
-git clone https://github.com/tgserver2018/Tarfand.farsi.git
+git clone git clone https://github.com/tgserver2018/Tarfand.farsi.git
 
 cd Tarfand.farsi
 
- chmod +x Tarfand Fa.sh
+ chmod +x tgcli
 
-./Tarfand Fa.sh install
+./Tarfandfarsi.sh install
 
-./Tarfand Fa.sh
+./Tarfandfarsi.sh
+
+
+		cd ..
+		chmod +x bot
+		chmod +x tg
 
 +98......
 
@@ -50,7 +55,7 @@ if [ ! -f ./tg/tgcli ]; then
     exit 1
 fi
    echo -e "\033[38;5;208m"
-   echo -e "     > best anti spam source SaMaN_SaNstaR"
+   echo -e "     > best anti spam source Tarfandfarsi "
    echo -e "                                              \033[0;00m"
    echo -e "\e[36m"
    ./tg/tgcli -s ./bot/bot.lua $@
