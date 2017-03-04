@@ -1,5 +1,5 @@
 --Begin Tools.lua :)
-local SUDO = 123456789 -- put Your ID here! <===
+local SUDO = 352331283 -- put Your ID here! <===
 local function index_function(user_id)
   for k,v in pairs(_config.admins) do
     if user_id == v[1] then
@@ -108,7 +108,7 @@ tdcli_function ({
     user_id_ = data.sender_user_id_
   }, adminprom_cb, {chat_id=data.chat_id_,user_id=data.sender_user_id_})
   end
-    if cmd == "admindem" then
+    if cmd == "حذف ادمین" then
 local function admindem_cb(arg, data)
 local hash = "gp_lang:"..arg.chat_id
 local lang = redis:get(hash)
@@ -138,7 +138,7 @@ tdcli_function ({
     user_id_ = data.sender_user_id_
   }, admindem_cb, {chat_id=data.chat_id_,user_id=data.sender_user_id_})
   end
-    if cmd == "visudo" then
+    if cmd == "سودو" then
 local function visudo_cb(arg, data)
 local hash = "gp_lang:"..arg.chat_id
 local lang = redis:get(hash)
@@ -168,7 +168,7 @@ tdcli_function ({
     user_id_ = data.sender_user_id_
   }, visudo_cb, {chat_id=data.chat_id_,user_id=data.sender_user_id_})
   end
-    if cmd == "desudo" then
+    if cmd == "حذف سودو" then
 local function desudo_cb(arg, data)
 local hash = "gp_lang:"..arg.chat_id
 local lang = redis:get(hash)
@@ -218,7 +218,7 @@ user_name = '@'..check_markdown(data.type_.user_.username_)
 else
 user_name = check_markdown(data.title_)
 end
-    if cmd == "adminprom" then
+    if cmd == "حذف ادمین" then
 if is_admin1(tonumber(data.id_)) then
     if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *admin*", 0, "md")
@@ -234,7 +234,7 @@ if is_admin1(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
 end
-    if cmd == "admindem" then
+    if cmd == "حذف ادمین" then
 	local nameid = index_function(tonumber(data.id_))
 if not is_admin1(data.id_) then
    if not lang then
@@ -251,7 +251,7 @@ if not is_admin1(data.id_) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
 end
-    if cmd == "visudo" then
+    if cmd == "سودو" then
 if already_sudo(tonumber(data.id_)) then
   if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
@@ -268,7 +268,7 @@ if already_sudo(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام سودو ربات منتصب شد_", 0, "md")
    end
 end
-    if cmd == "desudo" then
+    if cmd == "حذف سودو" then
      if not already_sudo(data.id_) then
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
@@ -305,7 +305,7 @@ user_name = '@'..check_markdown(data.username_)
 else
 user_name = check_markdown(data.first_name_)
 end
-    if cmd == "adminprom" then
+    if cmd == "حذف ادمین" then
 if is_admin1(tonumber(data.id_)) then
     if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *admin*", 0, "md")
@@ -321,7 +321,7 @@ if is_admin1(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
 end
-    if cmd == "admindem" then
+    if cmd == "حذف ادمین" then
 	local nameid = index_function(tonumber(data.id_))
 if not is_admin1(data.id_) then
    if not lang then
@@ -338,7 +338,7 @@ if not is_admin1(data.id_) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _از مقام ادمین ربات برکنار شد_", 0, "md")
    end
 end
-    if cmd == "visudo" then
+    if cmd == "سودو" then
 if already_sudo(tonumber(data.id_)) then
   if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
@@ -355,7 +355,7 @@ if already_sudo(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* _به مقام سودو ربات منتصب شد_", 0, "md")
    end
 end
-    if cmd == "desudo" then
+    if cmd == "حذف سودو" then
      if not already_sudo(data.id_) then
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
@@ -385,7 +385,7 @@ local function run(msg, matches)
 local hash = "gp_lang:"..msg.chat_id_
 local lang = redis:get(hash)
  if tonumber(msg.sender_user_id_) == SUDO then
-if matches[1] == "visudo" then
+if matches[1] == "سودو" then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
@@ -406,7 +406,7 @@ tdcli_function ({
     }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="visudo"})
       end
    end
-if matches[1] == "desudo" then
+if matches[1] == "حذف سودو" then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
@@ -428,7 +428,7 @@ tdcli_function ({
       end
    end
 end
-if matches[1] == "adminprom" and is_sudo(msg) then
+if matches[1] == "ادمین" and is_sudo(msg) then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
@@ -449,7 +449,7 @@ tdcli_function ({
     }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="adminprom"})
       end
    end
-if matches[1] == "admindem" and is_sudo(msg) then
+if matches[1] == "حذف ادمین" and is_sudo(msg) then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
@@ -471,7 +471,7 @@ tdcli_function ({
       end
    end
 
-if matches[1] == 'creategroup' and is_admin(msg) then
+if matches[1] == 'ساخت گروه' and is_admin(msg) then
 local text = matches[2]
 tdcli.createNewGroupChat({[0] = msg.sender_user_id_}, text)
   if not lang then
@@ -481,7 +481,7 @@ return '_گروه ساخته شد!_'
    end
 end
 
-if matches[1] == 'createsuper' and is_admin(msg) then
+if matches[1] == 'ساخت سوپر گروه' and is_admin(msg) then
 local text = matches[2]
 tdcli.createNewChannelChat({[0] = msg.sender_user_id_}, text)
    if not lang then 
@@ -491,7 +491,7 @@ return '_سوپر گروه ساخته شد!_'
    end
 end
 
-if matches[1] == 'tosuper' and is_admin(msg) then
+if matches[1] == 'سوپر گروه' and is_admin(msg) then
 local id = msg.chat_id_
 tdcli.migrateGroupChatToChannelChat(id)
   if not lang then
@@ -501,7 +501,7 @@ return '_گروه به سوپر گروه تبدیل شد!_'
    end
 end
 
-if matches[1] == 'import' and is_admin(msg) then
+if matches[1] == 'وارد کردن' and is_admin(msg) then
 tdcli.importChatInviteLink(matches[2])
    if not lang then
 return '*Done!*'
@@ -510,7 +510,7 @@ return '*انجام شد!*'
   end
 end
 
-if matches[1] == 'setbotname' and is_sudo(msg) then
+if matches[1] == 'اسم ربات' and is_sudo(msg) then
 tdcli.changeName(matches[2])
    if not lang then
 return '_Bot Name Changed To:_ *'..matches[2]..'*'
@@ -519,7 +519,7 @@ return '_اسم ربات تغییر کرد به:_ \n*'..matches[2]..'*'
    end
 end
 
-if matches[1] == 'setbotusername' and is_sudo(msg) then
+if matches[1] == 'یوزرنیم ربات' and is_sudo(msg) then
 tdcli.changeUsername(matches[2])
    if not lang then
 return '_Bot Username Changed To:_ @'..matches[2]
@@ -528,7 +528,7 @@ return '_یوزرنیم ربات تغییر کرد به:_ \n@'..matches[2]..''
    end
 end
 
-if matches[1] == 'delbotusername' and is_sudo(msg) then
+if matches[1] == 'حذف یوزرنیم ربات' and is_sudo(msg) then
 tdcli.changeUsername('')
    if not lang then
 return '*Done!*'
@@ -537,7 +537,7 @@ return '*انجام شد!*'
   end
 end
 
-if matches[1] == 'markread' then
+if matches[1] == 'تیک دوم' then
 if matches[2] == 'on' then
 redis:set('markread','on')
    if not lang then
@@ -556,10 +556,10 @@ return '_تیک دوم >_ *خاموش*'
    end
 end
 
-if matches[1] == 'bc' and is_admin(msg) then		
+if matches[1] == 'پی وی' and is_admin(msg) then		
 tdcli.sendMessage(matches[2], 0, 0, matches[3], 0)	end	
 
-if matches[1] == 'broadcast' and is_sudo(msg) then		
+if matches[1] == 'ارسال' and is_sudo(msg) then		
 local data = load_data(_config.moderation.data)		
 local bc = matches[2]			
 for k,v in pairs(data) do				
@@ -567,69 +567,69 @@ tdcli.sendMessage(k, 0, 0, bc, 0)
 end	
 end
 
-if matches[1] == 'sudolist' and is_sudo(msg) then
+if matches[1] == 'لیست سودو' and is_sudo(msg) then
 return sudolist(msg)
     end
-if matches[1] == 'permag' then
+if matches[1] == 'مدیر' then
 return tdcli.sendMessage(msg.chat_id_, msg.id_, 1, _config.info_text, 1, 'html')
     end
-if matches[1] == 'adminlist' and is_admin(msg) then
+if matches[1] == 'لیست ادمین' and is_admin(msg) then
 return adminlist(msg)
     end
-     if matches[1] == 'leave' and is_admin(msg) then
+     if matches[1] == 'خارج شو' and is_admin(msg) then
   tdcli.changeChatMemberStatus(chat, our_id, 'Left', dl_cb, nil)
    end
-     if matches[1] == 'autoleave' and is_admin(msg) then
+     if matches[1] == 'از گروه خارج' and is_admin(msg) then
 local hash = 'auto_leave_bot'
 --Enable Auto Leave
-     if matches[2] == 'enable' then
+     if matches[2] == 'شو' then
     redis:del(hash)
    return 'Auto leave has been enabled'
 --Disable Auto Leave
-     elseif matches[2] == 'disable' then
+     elseif matches[2] == 'نشو' then
     redis:set(hash, true)
    return 'Auto leave has been disabled'
 --Auto Leave Status
       elseif matches[2] == 'status' then
       if not redis:get(hash) then
-   return 'Auto leave is enable'
+   return 'از گروه خارج نشو'
        else
-   return 'Auto leave is disable'
+   return 'از گروه خارج شو'
          end
       end
    end
 end
 return { 
 patterns = { 
-"^[!/#](visudo)$", 
-"^[!/#](desudo)$",
-"^[!/#](sudolist)$",
-"^[!/#](visudo) (.*)$", 
-"^[!/#](desudo) (.*)$",
-"^[!/#](adminprom)$", 
-"^[!/#](admindem)$",
-"^[!/#](adminlist)$",
-"^[!/#](adminprom) (.*)$", 
-"^[!/#](admindem) (.*)$",
-"^[!/#](leave)$",
-"^[!/#](autoleave) (.*)$", 
-"^[!/#](permag)$",
-"^[!/#](creategroup) (.*)$",
-"^[!/#](createsuper) (.*)$",
-"^[!/#](tosuper)$",
-"^[!/#](import) (.*)$",
-"^[!/#](setbotname) (.*)$",
-"^[!/#](setbotusername) (.*)$",
-"^[!/#](delbotusername) (.*)$",
-"^[!/#](markread) (.*)$",
-"^[!/#](bc) (%d+) (.*)$",
-"^[!/#](broadcast) (.*)$",
+"^(سودو)$", 
+"^(حذف سودو)$",
+"^(لیست سودو)$",
+"^(سودو) (.*)$", 
+"^(حذف سودو) (.*)$",
+"^(ادمین)$", 
+"^(حذف ادمین)$",
+"^(لیست ادمین)$",
+"^(ادمین) (.*)$", 
+"^(حذف ادمین) (.*)$",
+"^(خارج شو)$",
+"^(از گروه خارج) (.*)$", 
+"^(مدیر)$",
+"^(ساخت گروه) (.*)$",
+"^(ساخت سوپر گروه) (.*)$",
+"^(سوپر گروه)$",
+"^(وارد کردن) (.*)$",
+"^(اسم ربات) (.*)$",
+"^(یوزرنیم ربات) (.*)$",
+"^(حذف یوزرنیم ربات) (.*)$",
+"^(تیک دوم) (.*)$",
+"^(پی وی) (%d+) (.*)$",
+"^(ارسال) (.*)$",
 }, 
 run = run 
 }
 
 -- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+— https://t.me/SaMaN_SaNstar2017
+— @MeGaNet_sbot
+— @SaMaN_SaNtori
+— @SaMaN_SaNstar2017
