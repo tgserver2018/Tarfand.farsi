@@ -26,12 +26,17 @@ end
       settings = {
           lock_link = 'yes',
           lock_tag = 'yes',
+		  lock_number = 'no',
+		  lock_emoji = 'no',
 		  lock_fosh = 'yes',
           lock_spam = 'no',
           lock_webpage = 'yes',
+		  lock_eng = 'no',
+		  lock_rtl = 'no',
 		  lock_arabic = 'no',
           lock_markdown = 'yes',
           flood = 'yes',
+	  member = 'no',
           lock_bots = 'yes',
           welcome = 'yes'
           },
@@ -765,6 +770,203 @@ end
 end
 end
 
+---------------Lock number-------------------
+local function lock_group_number(msg, data, target) 
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local group_number_lock = data[tostring(target)]['settings']['lock_number']
+ if group_number_lock == 'yes' then
+return reply_msg(msg.id,"<i>✨ارسال شماره قفل است✨</i>", ok_cb, false)
+else
+
+ data[tostring(target)]['settings']['lock_number'] = 'yes'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨ارسال شماره قفل شد✨</i>", ok_cb, false)
+end
+end
+end
+
+local function unlock_group_number(msg, data, target) 
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end 
+end
+
+local function unlock_group_number(msg, data, target)
+ if not is_momod(msg) then
+return
+end
+local group_number_lock = data[tostring(target)]['settings']['lock_number']
+ if group_number_lock == 'no' then
+return reply_msg(msg.id,"<i>✨ارسال شماره قفل نیست✨</i>", ok_cb, false)
+else
+data[tostring(target)]['settings']['lock_number'] = 'no'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨ارسال شماره ازاد شد✨</i>", ok_cb, false)
+end
+end
+end
+
+---------------Lock emoji-------------------
+local function lock_group_emoji(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
+ if group_emoji_lock == 'yes' then
+return reply_msg(msg.id,"<i>✨قفل ایموجی فعال است✨</i>", ok_cb, false)
+else
+ data[tostring(target)]['settings']['lock_emoji'] = 'yes'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨قفل ایموجی فعال شد✨</i>", ok_cb, false)
+end
+end
+end
+
+local function unlock_group_emoji(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end 
+end
+
+local function unlock_group_emoji(msg, data, target)
+  if not is_momod(msg) then
+return
+end
+local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
+ if group_emoji_lock == 'no' then
+return reply_msg(msg.id,"<i>✨قفل ایموجی فعال نیست✨</i>", ok_cb, false)
+else
+data[tostring(target)]['settings']['lock_emoji'] = 'no'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨ایموجی ازاد شد✨</i>", ok_cb, false)
+end
+end
+end
+
+---------------Lock English-------------------
+local function lock_group_eng(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
+ if group_eng_lock == 'yes' then
+return reply_msg(msg.id,"<i>✨انگلیسی قفل است!✨</i>", ok_cb, false)
+else
+ data[tostring(target)]['settings']['lock_eng'] = 'yes'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨انگلیسی قفل شد!✨</i>", ok_cb, false)
+end
+end
+end
+
+local function unlock_group_eng(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end 
+end
+
+local function unlock_group_eng(msg, data, target)
+  if not is_momod(msg) then
+return
+end
+local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
+ if group_eng_lock == 'no' then
+return reply_msg(msg.id,"<i>✨انگلیسی قفل نیست✨</i>", ok_cb, false)
+else
+data[tostring(target)]['settings']['lock_eng'] = 'no'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨انگلیسی ازاد شد✨</i>", ok_cb, false)
+end
+end
+end
+
+---------------Lock rtl-------------------
+local function lock_group_rtl(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
+ if group_rtl_lock == 'yes' then
+return reply_msg(msg.id,"<i>✨راستچین قفل است✨</i>", ok_cb, false)
+else
+ data[tostring(target)]['settings']['lock_rtl'] = 'yes'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨راستچین قفل شد✨</i>", ok_cb, false)
+end
+end
+end
+
+local function unlock_group_rtl(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end 
+end
+
+local function unlock_group_rtl(msg, data, target)
+  if not is_momod(msg) then
+return
+end
+local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
+ if group_rtl_lock == 'no' then
+return reply_msg(msg.id,"<i>✨راستچین قفل نیست✨</i>", ok_cb, false)
+else
+data[tostring(target)]['settings']['lock_rtl'] = 'no'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨راستچین ازاد شد✨</i>", ok_cb, false)
+end
+end
+end
+
 ---------------Lock Mention-------------------
 local function lock_mention(msg, data, target)
  local hash = "gp_lang:"..msg.chat_id_
@@ -1055,6 +1257,56 @@ end
 end
 end
 
+---------------Lock member-------------------
+local function lock_group_membermod(msg, data, target)
+local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end
+end
+
+local group_member_lock = data[tostring(target)]['settings']['lock_member']
+ if group_member_lock == "yes" then
+if not lang then
+return reply_msg(msg.id,"<i>✨اعضای گروه قفل است✨</i>", ok_cb, false)
+else
+ data[tostring(target)]['settings']['lock_member'] = 'yes'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨قفل اعضا فعال شد✨</i>", ok_cb, false)
+end
+end
+end
+
+local function unlock_group_membermod(msg, data, target)
+ local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+ if not is_mod(msg) then
+if not lang then
+ return "_You're Not_ *Moderator*"
+else
+ return "شما مدیر گروه نمیباشید"
+end 
+end
+
+local function unlock_group_membermod(msg, data, target)
+  if not is_momod(msg) then
+return
+end
+local group_member_lock = data[tostring(target)]['settings']['lock_member']
+ if group_member_lock == 'no' then
+return reply_msg(msg.id,"<i>✨اعضای گروه قفل نیست✨</i>", ok_cb, false)
+else
+data[tostring(target)]['settings']['lock_member'] = 'no'
+save_data(_config.moderation.data, data)
+return reply_msg(msg.id,"<i>✨اعضای گروه ازاد شد✨</i>", ok_cb, false)
+end
+end
+end
+
 ---------------Lock Bots-------------------
 local function lock_bots(msg, data, target) 
 local hash = "gp_lang:"..msg.chat_id_
@@ -1264,6 +1516,18 @@ end
 end
 
 if data[tostring(target)]["settings"] then		
+if not data[tostring(target)]["settings"]["lock_number"] then			
+data[tostring(target)]["settings"]["lock_number"] = "no"		
+end
+end
+
+if data[tostring(target)]["settings"] then		
+if not data[tostring(target)]["settings"]["lock_emoji"] then			
+data[tostring(target)]["settings"]["lock_emoji"] = "no"		
+end
+end
+
+if data[tostring(target)]["settings"] then		
 if not data[tostring(target)]["settings"]["lock_fosh"] then			
 data[tostring(target)]["settings"]["lock_fosh"] = "yes"		
 end
@@ -1300,6 +1564,12 @@ end
 end
 
 if data[tostring(target)]["settings"] then		
+if not data[tostring(target)]["settings"]["lock_member"] then			
+data[tostring(target)]["settings"]["lock_member"] = "no"		
+end
+end
+
+if data[tostring(target)]["settings"] then		
 if not data[tostring(target)]["settings"]["lock_bots"] then			
 data[tostring(target)]["settings"]["lock_bots"] = "yes"		
 end
@@ -1314,6 +1584,18 @@ end
 if data[tostring(target)]["settings"] then		
 if not data[tostring(target)]["settings"]["lock_webpage"] then			
 data[tostring(target)]["settings"]["lock_webpage"] = "no"		
+end
+end
+
+if data[tostring(target)]["settings"] then		
+if not data[tostring(target)]["settings"]["lock_eng"] then			
+data[tostring(target)]["settings"]["lock_eng"] = "no"		
+end
+end
+
+if data[tostring(target)]["settings"] then		
+if not data[tostring(target)]["settings"]["lock_rtl"] then			
+data[tostring(target)]["settings"]["lock_rtl"] = "no"		
 end
 end
 
@@ -1413,10 +1695,10 @@ local expiretime = redis:hget('expiretime', msg.chat_id_)
 
 if not lang then
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*Group Settings*🔰\n\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock fosh :_ *"..settings.lock_fosh.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock Persian* :_ *"..settings.lock_arabic.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Lock markdown :_ *"..settings.lock_markdown.."*\n🔐_Bots protection :_ *"..settings.lock_bots.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋_welcome :_ *"..settings.welcome.."*\n\n 🔊Group Mute List 🔊 \n\n🔇_Mute all : _ *"..settings.mute_all.."*\n🔇_Mute gif :_ *"..settings.mute_gif.."*\n🔇_Mute text :_ *"..settings.mute_text.."*\n🔇_Mute inline :_ *"..settings.mute_inline.."*\n🔇_Mute game :_ *"..settings.mute_game.."*\n🔇_Mute photo :_ *"..settings.mute_photo.."*\n🔇_Mute video :_ *"..settings.mute_video.."*\n🔇_Mute audio :_ *"..settings.mute_audio.."*\n🔇_Mute voice :_ *"..settings.mute_voice.."*\n🔇_Mute sticker :_ *"..settings.mute_sticker.."*\n🔇_Mute contact :_ *"..settings.mute_contact.."*\n🔇_Mute forward :_ *"..settings.mute_forward.."*\n🔇_Mute location :_ *"..settings.mute_location.."*\n🔇_Mute document :_ *"..settings.mute_document.."*\n🔇_Mute TgService :_ *"..settings.mute_tgservice.."*\n*__________________*\n⏱_expire time :_ *"..expire.."*\n*____________________*\n*Language* : *EN*"
+ text = "🔰*Group Settings*🔰\n\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock fosh :_ *"..settings.lock_fosh.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock Number* :_*"..settings.lock_number.."*\n🔐_Lock Emoji* :_*"..settings.lock_emoji.."*\n🔐_Lock Persian* :_ *"..settings.lock_arabic.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock Member* :_*"..settings.lock_member.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Lock English* :_*"..settings.lock_eng.."*\n🔐_Lock Rastchin* :_*"..settings.lock_rtl.."*\n🔐_Lock markdown :_ *"..settings.lock_markdown.."*\n🔐_Bots protection :_ *"..settings.lock_bots.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋️_welcome :_ *"..settings.welcome.."*\n\n 🔊Group Mute List 🔊 \n\n🔇_Mute all : _ *"..settings.mute_all.."*\n🔇_Mute gif :_ *"..settings.mute_gif.."*\n🔇_Mute text :_ *"..settings.mute_text.."*\n🔇_Mute inline :_ *"..settings.mute_inline.."*\n🔇_Mute game :_ *"..settings.mute_game.."*\n🔇_Mute photo :_ *"..settings.mute_photo.."*\n🔇_Mute video :_ *"..settings.mute_video.."*\n🔇_Mute audio :_ *"..settings.mute_audio.."*\n🔇_Mute voice :_ *"..settings.mute_voice.."*\n🔇_Mute sticker :_ *"..settings.mute_sticker.."*\n🔇_Mute contact :_ *"..settings.mute_contact.."*\n🔇_Mute forward :_ *"..settings.mute_forward.."*\n🔇_Mute location :_ *"..settings.mute_location.."*\n🔇_Mute document :_ *"..settings.mute_document.."*\n🔇_Mute TgService :_ *"..settings.mute_tgservice.."*\n*__________________*\n⏱_expire time :_ *"..expire.."*\n*____________________*\n*Language* : *EN*"
 else
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل فحش :_ *"..settings.lock_fosh.."*\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل فارسی* :_ *"..settings.lock_arabic.."*\n🔐_قفل پیام مکرر :_ *"..settings.flood.."*\n🔐_قفل هرزنامه :_ *"..settings.lock_spam.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n🔐_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n✋_پیام خوش آمد گویی :_ *"..settings.welcome.."*\n\n 🔊لیست ممنوعیت ها 🔊  \n\n🔇_ممنوع کردن همه : _ *"..settings.mute_all.."*\n🔇_ممنوع کردن تصاویر متحرک :_ *"..settings.mute_gif.."*\n🔇_ممنوع کردن  متن :_ *"..settings.mute_text.."*\n🔇_تبلیغات شیشه ای ممنوع :_ *"..settings.mute_inline.."*\n🔇_ممنوع کردن بازی  :_ *"..settings.mute_game.."*\n🔇_ممنوع کردن عکس :_ *"..settings.mute_photo.."*\n🔇_ممنوع کردن فیلم :_ *"..settings.mute_video.."*\n🔇_ممنوع کردن آهنگ :_ *"..settings.mute_audio.."*\n🔇_ممنوع کردن صدا :_ *"..settings.mute_voice.."*\n🔇_ممنوع کردن استیکر :_ *"..settings.mute_sticker.."*\n🔇_ممنوع کردن ارسال اطلاعات :_ *"..settings.mute_contact.."*\n🔇_ممنوع کردن فوروارد :_ *"..settings.mute_forward.."*\n🔇_ممنوع کردن ارسال مکان :_ *"..settings.mute_location.."*\n🔇_ممنوع کردن ارسال فایل :_ *"..settings.mute_document.."*\n🔇_ممنوع کردن اعلانات :_ *"..settings.mute_tgservice.."*\n*__________________*\n⏱_تاریخ انقضا :_ *"..expire.."*\n*____________________*\n*زبان ربات* : *فارسی*"
+ text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل فحش :_ *"..settings.lock_fosh.."*\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل شماره* :_*"..settings.lock_nember.."*\n🔐_قفل ایموجی* :_*"..settings.lock_emoji.."*\n🔐_قفل فارسی* :_ *"..settings.lock_arabic.."*\n🔐_قفل پیام مکرر :_ *"..settings.flood.."*\n🔐_قفل هرزنامه :_ *"..settings.lock_spam.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل اعضا* :_*"..settings.lock_member.."*\n🔐_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n🔐_قفل انگلیسی* :_*"..settings.lock_eng.."*\n🔐_قفل راسچین* :_*"..settings.lock_rtl.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n🔐_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n✋️_پیام خوش آمد گویی :_ *"..settings.welcome.."*\n\n 🔊لیست ممنوعیت ها 🔊  \n\n🔇_ممنوع کردن همه : _ *"..settings.mute_all.."*\n🔇_ممنوع کردن تصاویر متحرک :_ *"..settings.mute_gif.."*\n🔇_ممنوع کردن  متن :_ *"..settings.mute_text.."*\n🔇_تبلیغات شیشه ای ممنوع :_ *"..settings.mute_inline.."*\n🔇_ممنوع کردن بازی  :_ *"..settings.mute_game.."*\n🔇_ممنوع کردن عکس :_ *"..settings.mute_photo.."*\n🔇_ممنوع کردن فیلم :_ *"..settings.mute_video.."*\n🔇_ممنوع کردن آهنگ :_ *"..settings.mute_audio.."*\n🔇_ممنوع کردن صدا :_ *"..settings.mute_voice.."*\n🔇_ممنوع کردن استیکر :_ *"..settings.mute_sticker.."*\n🔇_ممنوع کردن ارسال اطلاعات :_ *"..settings.mute_contact.."*\n🔇_ممنوع کردن فوروارد :_ *"..settings.mute_forward.."*\n🔇_ممنوع کردن ارسال مکان :_ *"..settings.mute_location.."*\n🔇_ممنوع کردن ارسال فایل :_ *"..settings.mute_document.."*\n🔇_ممنوع کردن اعلانات :_ *"..settings.mute_tgservice.."*\n*__________________*\n⏱_تاریخ انقضا :_ *"..expire.."*\n*____________________*\n*زبان ربات* : *فارسی*"
 end
 return text
 end
@@ -2338,7 +2620,7 @@ else
 return "پیام سنجاق شده پاک شد"
 end
 end
-if matches[1] == "نصب" then
+if matches[1] == "اضافه" then
 return modadd(msg)
 end
 if matches[1] == "حذف" then
@@ -2440,6 +2722,12 @@ end
 if matches[2] == "تگ" then
 return lock_tag(msg, data, target)
 end
+if matches[2] == "شماره" then
+return lock_tag(msg, data, target)
+end
+if matches[2] == "ایموجی" then
+return lock_tag(msg, data, target)
+end
 if matches[2] == "هایپرلینک" then
 return lock_mention(msg, data, target)
 end
@@ -2455,6 +2743,9 @@ end
 if matches[2] == "فلود" then
 return lock_flood(msg, data, target)
 end
+if matches[2] == "اعضا" then
+return lock_tag(msg, data, target)
+end
 if matches[2] == "ربات" then
 return lock_bots(msg, data, target)
 end
@@ -2464,42 +2755,63 @@ end
 if matches[2] == "وبسایت" then
 return lock_webpage(msg, data, target)
 end
+if matches[2] == "انگلیسی" then
+return lock_tag(msg, data, target)
+end
+if matches[2] == "راستچین" then
+return lock_tag(msg, data, target)
+end
 end
 
-if matches[1] == "باز کردن" and is_mod(msg) then
+if matches[1] == "بازکردن" and is_mod(msg) then
 local target = msg.chat_id_
 if matches[2] == "لینک" then
-return unlock_link(msg, data, target)
+return lock_link(msg, data, target)
 end
 if matches[2] == "فحش" then
-return unlock_fosh(msg, data, target)
+return lock_fosh(msg, data, target)
 end
 if matches[2] == "تگ" then
-return unlock_tag(msg, data, target)
+return lock_tag(msg, data, target)
+end
+if matches[2] == "شماره" then
+return lock_tag(msg, data, target)
+end
+if matches[2] == "ایموجی" then
+return lock_tag(msg, data, target)
 end
 if matches[2] == "هایپرلینک" then
-return unlock_mention(msg, data, target)
+return lock_mention(msg, data, target)
 end
 if matches[2] == "عربی" then
-return unlock_arabic(msg, data, target)
+return lock_arabic(msg, data, target)
 end
 if matches[2] == "ویرایش" then
-return unlock_edit(msg, data, target)
+return lock_edit(msg, data, target)
 end
 if matches[2] == "اسپم" then
-return unlock_spam(msg, data, target)
+return lock_spam(msg, data, target)
 end
 if matches[2] == "فلود" then
-return unlock_flood(msg, data, target)
+return lock_flood(msg, data, target)
+end
+if matches[2] == "اعضا" then
+return lock_tag(msg, data, target)
 end
 if matches[2] == "ربات" then
-return unlock_bots(msg, data, target)
+return lock_bots(msg, data, target)
 end
 if matches[2] == "فونت" then
-return unlock_markdown(msg, data, target)
+return lock_markdown(msg, data, target)
 end
 if matches[2] == "وبسایت" then
-return unlock_webpage(msg, data, target)
+return lock_webpage(msg, data, target)
+end
+if matches[2] == "انگلیسی" then
+return lock_tag(msg, data, target)
+end
+if matches[2] == "راستچین" then
+return lock_tag(msg, data, target)
 end
 end
 if matches[1] == "ممنوعیت" and is_mod(msg) then
@@ -2917,10 +3229,10 @@ _Show User ID_
 🔹*!whois* `[id]`
 _Show User's Username And Name_
 
-🔒*!lock* `[link | tag | arabic | edit | fosh | webpage | bots | spam | flood | markdown | mention]`
+🔒*!lock* `[link | tag | number | emoji | arabic | edit | fosh | webpage | eng | rtl | bots | spam | flood | nember | markdown | mention]`
 _If This Actions Lock, Bot Check Actions And Delete Them_
 
-🔓*!unlock* `[link | tag | arabic | edit | fosh | webpage | bots | spam | flood | markdown | mention]`
+🔓*!unlock* `[link | tag | number | emoji | arabic | edit | fosh | webpage | eng | rtl | bots | spam | flood | nember | markdown | mention]`
 _If This Actions Unlock, Bot Not Delete Them_
 
 🔕*!mute* `[gifs | photo | tgservice | document | sticker | video | text | forward | location | audio | voice | contact | all]`
@@ -3035,11 +3347,19 @@ text2 = [[
 
 💬 قفل کردن لینک گروه ها
 🔒*قفل لینک*
-🔓*باز کردن لینک*
+🔓*بازکردن لینک*
 〰〰〰〰〰
 💬 قفل کردن یوزرنیم
 🔒*قفل تگ*
-🔓*باز کردن تگ*
+🔓*بازکردن تگ*
+〰〰〰〰〰
+💬 قفل کردن عدد انگلیسی
+🔒*قفل شماره*
+🔓*بازکردن شماره*
+〰〰〰〰〰
+💬 قفل کردن شکلک
+🔒*قفل ایموجی*
+🔓*بازکردن ایموجی*
 〰〰〰〰〰
 💬 قفل کردن متن فارسی و عربی
 🔒*قفل عربی*
@@ -3048,6 +3368,14 @@ text2 = [[
 💬 قفل کردن لینک سایت ها
 🔒*قفل وبسایت*
 🔓*باز کردن وبسایت*
+〰〰〰〰〰
+💬 قفل کردن متن انگلیسی
+🔒*قفل انگلیسی*
+🔓*بازکردن انگلیسی*
+〰〰〰〰〰
+💬 قفل کردن راستچین
+🔒*قفل راستچین*
+🔓*بازکردن راستچین*
 〰〰〰〰〰
 💬 جلوگیری از ویرایش متن
 🔒*قفل ویرایش*
@@ -3064,6 +3392,10 @@ text2 = [[
 💬 قفل پیام های رگباری
 🔒*قفل فلود*
 🔓*باز کردن فلود*
+〰〰〰〰〰
+💬 قفل کردن اعضای گروه
+🔒*قفل اعضا*
+🔓*بازکردن اعضا*
 〰〰〰〰〰
 💬 قفل بولد و ایتالیک متن
 🔒*قفل فونت*
@@ -3150,8 +3482,8 @@ text3 = [[
 〰〰〰〰〰
 💬 میوت تایم دار
 عدد اول ساعت عدد دوم دقیقه
-🔇*!mt 0 1*
-🔊*!unmt*
+🔇*mt 0 1*
+🔊*بازکردن گروه*
 〰〰〰〰〰
 در زدن دستورات به فاصله حروف دقت کنید
 ...
@@ -3240,24 +3572,25 @@ text4 = [[
 🚫 *لیست فیلتر* 
 💬 نمایش لیست فیلتر
 〰〰〰〰〰
-🎗*تنظیم ولکام* متن پیام
-➕*ولکام نصب*
-➖*ولکام حذف*
+🎗*تنظیم خوش آمد* متن پیام
+➕*خوش آمد فعال*
+➖*خوش آمد غیرفعال*
 💬 ست کردن و فعال و غیرفعال کردن خوش آمد گویی
 〰〰〰〰〰
-♻️ *!del* 1-100
+♻️ *del* 1-100
 ♻️ *!delall* `[reply]`
 💬 حذف پیام های گروه حداکثر 100
 〰〰〰〰〰
-⏱ *!setexpire*  30
-⏱ *!expire*
+⏱ *تنظیم تاریخ*  30
+⏱ *تاریخ انقضای گروه*
 💬 تنظیم انقضای گروه
 〰〰〰〰〰
-📣 *!broadcast* متن پیام
+📣 *ارسال* متن پیام
 💬 ارسال یک پیام به همه گروهایی که ربات مدیر است
 〰〰〰〰〰
-⚙*!autoleave enable*
-⚙*!autoleave disable*
+⚙️*از گروه خارج نشو*
+⚙️*از گروه خارج شو*
+⚙️* خارج شو*
 💬 تنظیم خارج شدن ربات
 ...
 در زدن دستورات به فاصله حروف دقت کنید
@@ -3267,15 +3600,15 @@ end
 
 if matches[1] == "انلاینی" and is_mod(msg) then
 text5 = [[
-😎آنلاینم عزیز و حواسم به گروه هست 
+☠️ بله بابایی آنلاینم و حواسم به گروه هست☠️
 ]]
 return text5 
 end
 
 
 --------------------- Welcome -----------------------
-	if matches[1] == "ولکام" and is_mod(msg) then
-		if matches[2] == "نصب" then
+	if matches[1] == "خوش آمد" and is_mod(msg) then
+		if matches[2] == "فعال" then
 			welcome = data[tostring(chat)]['settings']['welcome']
 			if welcome == "yes" then
        if not lang then
@@ -3294,7 +3627,7 @@ end
 			end
 		end
 		
-		if matches[2] == "حذف" then
+		if matches[2] == "غیرفعال" then
 			welcome = data[tostring(chat)]['settings']['welcome']
 			if welcome == "no" then
       if not lang then
@@ -3313,7 +3646,7 @@ end
 			end
 		end
 	end
-	if matches[1] == "تنظیم ولکام" and matches[2] and is_mod(msg) then
+	if matches[1] == "تنظیم خوش آمد" and matches[2] and is_mod(msg) then
 		data[tostring(chat)]['setwelcome'] = matches[2]
 	    save_data(_config.moderation.data, data)
        if not lang then
@@ -3397,8 +3730,10 @@ patterns ={
 "^(حذف سنجاق)$",
 "^(اطلاعات گروه)$",
 "^(تست)$",
-"^(نصب)$",
+"^(اضافه)$",
 "^(حذف)$",
+"^(فعال)$",
+"^(غیرفعال)$",
 "^(انتخاب مدیر)$",
 "^(انتخاب مدیر) (.*)$",
 "^(حذف مدیر)$",
@@ -3410,7 +3745,7 @@ patterns ={
 "^(لیست ناظران)$",
 "^(لیست مدیران)$",
 "^(قفل) (.*)$",
-"^(باز کردن) (.*)$",
+"^(بازکردن) (.*)$",
 "^(تنظیمات)$",
 "^(لیست ممنوعیت)$",
 "^(ممنوعیت) (.*)$",
@@ -3433,16 +3768,16 @@ patterns ={
 "^(لیست فیلتر)$",
 "^([https?://w]*.?t.me/joinchat/%S+)$",
 "^([https?://w]*.?telegram.me/joinchat/%S+)$",
-"^(تنظیم ولکام) (.*)",
-"^(ولکام) (.*)$"
+"^(تنظیم خوش آمد) (.*)",
+"^(خوش آمد) (.*)$"
 
 
 },
 run=run,
 pre_process = pre_process
 }
--- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+-- کد های پایین در ربات نشان داده نمیش��ند
+— https://t.me/SaMaN_SaNstar2017
+— @MeGaNet_sbot
+— @SaMaN_SaNtori
+— @SaMaN_SaNstar2017
