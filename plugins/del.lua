@@ -8,7 +8,7 @@ local function run(msg, matches)
     if msg.chat_id_:match("^-100") then
        if is_owner(msg) or is_mod(msg) then
           if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
-             pm = '_ 100> ÊÚÏÇÏ íÇã åÇí ŞÇÈá ÍĞİ åÑ ÏİÚå >1 _'
+            pm = '_ 100> âœ¨ØªØ¹Ø¯Ø§Ø¯ Ù¾ÛŒØ§Ù… Ù‡Ø§ Ù…ÙˆØ±Ø¯ Ù†Ø¸Ø± Ù¾Ø§Ú© Ø´Ø¯  >1 âœ¨_'
              tdcli.sendMessage(msg.chat_id_, data.msg.id_, 1, pm, 1, 'html')
              else
           tdcli_function ({
@@ -18,11 +18,11 @@ local function run(msg, matches)
     offset_ = 0,
     limit_ = tonumber(matches[2])
   }, delmsg, nil)
-             pm ='*'..matches[2]..'* _íÇã ÇÎíÑ Ç˜ ÔÏ_'
+              pm ='*'..matches[2]..'* _âœ¨Ù¾ÛŒØ§Ù… Ú¯Ø±ÙˆÙ‡ Ù¾Ø§Ú© Ø´Ø¯âœ¨_'
              tdcli.sendMessage(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
          end
      end
- else pm ='Çíä Çã˜Çä İŞØ ÏÑ _ÓæÑ Ñæå_ ãã˜ä ÇÓÊ.'
+ else pm ='ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ _ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½_ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.'
     tdcli.sendMessage(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
 end
 end
@@ -30,10 +30,11 @@ end
 
 return {
     patterns = {
-        '^[!#/]([Dd][Ee][Ll]) (%d*)$'
+        '^([Dd][Ee][Ll]) (%d*)$'
     },
     run = run
 }
--- http://permag.ir
--- @permag_ir
--- @permag_bots
+â€” https://t.me/SaMaN_SaNstar2017
+â€” @MeGaNet_sbot
+â€” @SaMaN_SaNtori
+â€” @SaMaN_SaNstar2017
