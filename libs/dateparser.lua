@@ -192,7 +192,7 @@ dateparser.register_format('RFC3339', formats.W3CDTF) --RFC3339 is a subset of W
 return dateparser
 
 -- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+— https://t.me/SaMaN_SaNstar2017
+— @MeGaNet_sbot
+— @SaMaN_SaNtori
+— @SaMaN_SaNstar2017
