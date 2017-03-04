@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME/permag.ir
+cd $HOME/Tarfand.farsi
 
 install() {
 	    cd tg
@@ -23,13 +23,13 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 
 cd $HOME
 
-git clone https://github.com/permag-ir/permag.ir.git
+git clone https://github.com/tgserver2018/Tarfand.farsi.git
 
-cd permag.ir
+cd Tarfand.farsi
 
- chmod +x permag.sh
+ chmod +x Tarfand Fa.sh
 
-./permag.sh install
+./Tarfand Fa.sh install
 
 ./Tarfand Fa.sh
 
