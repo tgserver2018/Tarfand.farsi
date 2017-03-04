@@ -20,7 +20,7 @@ local function run(msg, matches)
      return "⛔️گروه به مدت: \n`"..matches[2].."` ساعت\n`"..matches[3].."` دقیقه \nتعطیل میباشد.️"
     end
   end
-  if matches[1]:lower() == 'unmt' and is_mod(msg) then
+  if matches[1]:lower() == 'بازکردن گروه' and is_mod(msg) then
      local hash = 'mute_time:'..msg.chat_id_
      redis:del(hash)
      return "*✅گروه برای ارسال پیام کاربران باز شد.*"
@@ -28,13 +28,13 @@ local function run(msg, matches)
 end
 return {
    patterns = {
-      '^[/!#]([Mm][Tt])$',
-      '^[/!#]([Uu][Nn][Mm][Tt])$',
-	  '^[/!#]([Mm][Tt]) (%d+) (%d+)$',
+      '^([Mm][Tt])$',
+      '^(بازکردن گروه)$',
+	  '^([Mm][Tt]) (%d+) (%d+)$',
  },
   run = run,
   pre_process = pre_process
 }
--- http://permag.ir
--- @permag_ir
--- @permag_bots
+-- http://SaMaN_SaNstaR
+-- @SaMaN_SaNstar1
+-- @MeGaNet_sbot
