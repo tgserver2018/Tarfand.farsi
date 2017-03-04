@@ -1,5 +1,6 @@
 do
 
+
 -- Returns the key (index) in the config.enabled_plugins table
 local function plugin_enabled( name )
   for k,v in pairs(_config.enabled_plugins) do
@@ -10,7 +11,6 @@ local function plugin_enabled( name )
   -- If not found
   return false
 end
-
 -- Returns true if file exists in plugins folder
 local function plugin_exists( name )
   for k,v in pairs(plugins_names()) do
